@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/academic-website' : '',
+  basePath: '/academic-website',
   trailingSlash: true,
   reactStrictMode: true,
   typescript: {
@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true
   },
+  assetPrefix: '/academic-website/',
 };
 
 export default nextConfig;
