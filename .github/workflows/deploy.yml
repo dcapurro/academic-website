@@ -79,7 +79,10 @@ jobs:
       - name: Build with Next.js
         env:
           NODE_ENV: production
+          NEXT_TELEMETRY_DISABLED: 1
         run: |
+          rm -rf .next out
+          mkdir -p out
           ${{ steps.detect-package-manager.outputs.manager }} run build
           touch out/.nojekyll
         working-directory: ${{ env.BUILD_PATH }}
