@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Daniel Capurro | Associate Professor in Clinical AI",
   description: "Academic website of Daniel Capurro, Associate Professor in Clinical AI at the University of Melbourne",
+  metadataBase: new URL('https://dcapurro.github.io/academic-website'),
 };
 
 export default function RootLayout({
