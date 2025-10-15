@@ -3,9 +3,18 @@ name: Deploy Next.js site to Pages
 on:
   push:
     branches: ["main"]
-  workflow_dispatch:
-
-permissions:
+  workflow_dispatc      - name: Prepare artifacts
+        run: |
+          ls -la
+          mv out/_next out/next
+          sed -i 's/_next/next/g' out/**/*.html
+          cp out/.nojekyll .
+        working-directory: ${{ env.BUILD_PATH }}
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.BUILD_PATH }}/outpermissions:
   contents: read
   pages: write
   id-token: write
@@ -82,10 +91,10 @@ jobs:
           NEXT_TELEMETRY_DISABLED: 1
         run: |
           rm -rf .next out
-          mkdir -p out
           ${{ steps.detect-package-manager.outputs.manager }} run build
+          ls -la out/
           touch out/.nojekyll
-        working-directory: ${{ env.BUILD_PATH }}
+        working-directory: ${{ env.BUILD_PATH }
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

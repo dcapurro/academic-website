@@ -3,6 +3,10 @@ const nextConfig = {
   output: 'export',
   basePath: '/academic-website',
   trailingSlash: true,
+  distDir: 'dist',
+  images: {
+    unoptimized: true
+  }
 }
 
-export default nextConfig;
+module.exports = nextConfig
